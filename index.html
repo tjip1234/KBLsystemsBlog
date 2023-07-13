@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>KBLsystems Audio Lab</title>
+    <title>Tjip1234 Lab</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     
 </head>
 <body>
     <header>
         <div class="header-content">
-            <h1>KBLsystems Audio Lab</h1>
-            <h2>Purpose built audio solutions</h2>
+            <h1>Tjip1234 Lab</h1>
+            <h2>Random projects for fun</h2>
         </div>
     </header>
-    <nav>
-        <ul>
-            <li><a href="#main">Main page</a></li>
-            <li><a href="#xover">X-over Setup</a></li>
-            <li><a href="#stm32">STM32</a></li>
-            <li><a href="#fir">FIR hello filtering</a></li>
-            <li><a href="#past">Past Projects</a></li>
-        </ul>
-    </nav>
-    <main>
-        <section id="main">
-            <h2>Main Page</h2>
-            <iframe src="fir-filtering.html" width="100%" height="500px" frameborder="0"></iframe>
-                        
-        </section>
+
+    <div id="sidebar">
+        <h3>Tags</h3>
+        <div id="tag-filter">
+            <button class="tag-button" data-tag="OpenWrt">OpenWrt</button>
+            <button class="tag-button" data-tag="Samba">Samba</button>
+            <button class="tag-button" data-tag="theater">Theater</button>
+        </div>
+    </div>
+
+    <main id="main" class="main">
         
+        <h2>Main Page</h2>
+        <iframe src="openwrtSamba.html" width="100%"  frameborder="0" data-tags="OpenWrt,Samba" class="iframe-thing"></iframe>               
+         
     </main>
+
     <footer>
         <!-- Footer content -->
     </footer>
+
     <script src="script.js"></script>
 </body>
+
 </html>
