@@ -47,7 +47,7 @@ body {
     color: #0056b3;
 }
 .full-article {
-    display:none;
+    display: block;
     padding: 20px;
     border-top: 1px solid #ddd;
 }

@@ -2,32 +2,31 @@
 document.querySelectorAll('.blog-link').forEach(link => {
     link.addEventListener('click', function (e) {
         e.preventDefault();
-        const fullArticle = this.parentNode.nextElementSibling;
-        fullArticle.style.display = fullArticle.style.display != 'block' ? 'block' : 'none';
-        if (fullArticle.style.display == 'none'){
-            // send a message to the parent window to change the iframe height
-            window.parent.postMessage({ height: this.parentNode.parentNode.parentNode.clientHeight + 'px'}, '*');
-        } else {
-            // send a message to the parent window to change the iframe height
-            window.parent.postMessage({ height: fullArticle.clientHeight + 'px' }, '*');
-        }
+
+        const articleUrl = this.getAttribute('href');  
+        window.open(articleUrl, '_blank');
+
     });
 });
 
-var iframe = document.querySelector('iframe');
-if (iframe) {
-    iframe.onload = function() {
-        iframe.style.height = iframe.contentWindow.document.body.clientHeight + 'px';
-    };
-}        
-window.addEventListener('message', function(event) {
-    // Change the height of iframe according to the received message
-    var iframe = document.querySelector('iframe');
-    if (iframe && event.data.height) {
-        iframe.style.height = event.data.height;
-    }
-});
-    
+window.onload = function() {
+        const inIframe = window !== window.top;
+        console.log(inIframe)
+        if (inIframe) {
+            document.querySelectorAll('.blog-link').forEach(link => {
+                const fullArticle = link.parentNode.nextElementSibling;
+                fullArticle.style.display = 'none';
+            });
+        }
+        if (!inIframe){
+            document.querySelectorAll('.blog-link').forEach(link => {
+                link.remove()
+            }); 
+        }
+};
+
+     
+
 
 document.addEventListener('DOMContentLoaded', function() {
 
