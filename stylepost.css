@@ -1,33 +1,60 @@
-
+/* Overall Page Layout */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    text-align: left;
     background-color: #f4f4f4;
     display: grid;
-
+    grid-template-columns: 1fr 3fr;
+    column-gap: 20px;
+    max-width: auto;
+    margin: auto;
 }
+
+/* Sidebar Styles */
+.sidebar {
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.sidebar h4 {
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.sidebar iframe {
+    width: 100%; /* Use the full width of the sidebar */
+    height: 30em; /* Adjust based on your iframe content */
+    border: none; /* Remove the border */
+    margin: 0; /* Remove margin */
+    padding: 0; /* Remove padding */
+    display: block; /* Make sure it takes up full width and sits on a new line */
+    overflow: auto; /* Allow scrolling if content exceeds iframe dimensions */
+    margin-top: 10px;
+}
+
+/* Main Post Styles */
 .post-body {
     background-color: #ffffff;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
     margin-bottom: 30px;
-    overflow: hidden;
+    overflow: visible;
     border-radius: 10px;
-}
-
-.post-body img{
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
 }
 
 .blog-content {
     padding: 20px;
 }
 
-.blog-title {
+.blog-title, .full-article h2 {
     margin: 0 0 10px 0;
     color: #333;
+    font-size: 24px; /* Make headers slightly bigger */
 }
 
 .blog-description {
@@ -35,19 +62,139 @@ body {
     line-height: 1.6;
 }
 
-.blog-link {
-    display: inline-block;
-    color: #007bff;
-    text-decoration: none;
+.blog-link, .full-article a {
     margin-top: 10px;
-    transition: color 0.3s ease;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
 }
 
-.blog-link:hover {
-    color: #0056b3;
-}
 .full-article {
-    display: block;
     padding: 20px;
-    border-top: 1px solid #ddd;
+}
+
+.full-article h3 {
+    font-size: 20px; /* Slightly bigger sub-headers */
+}
+.home-btn {
+    display: block;
+    color: #ffffff;
+    background-color: #007bff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin-bottom: 20px; /* spacing between the button and the next element */
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.home-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Hide sidebar on mobile */
+@media (max-width: 768px) { /* Adjust the breakpoint as needed */
+    .sidebar {
+        display: none;
+    }
+}
+
+body.dark-mode {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .sidebar, 
+body.dark-mode .post-body {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .sidebar h4, 
+body.dark-mode .blog-title, 
+body.dark-mode .full-article h2, 
+body.dark-mode .full-article h3 {
+    color: #e0e0e0;
+    border-bottom: 1px solid #555;
+}
+
+body.dark-mode .blog-description {
+    color: #bbbbbb;
+}
+
+body.dark-mode .blog-link, 
+body.dark-mode .full-article a, 
+body.dark-mode .home-btn {
+    background-color: #555;
+    color: #e0e0e0;
+    border: none;
+}
+
+body.dark-mode .home-btn:hover {
+    background-color: #444;
+}
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 28px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px; /* Rounded edges */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Material Design shadow */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%; /* Make it circular */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Material Design shadow */
+}
+
+input:checked + .slider {
+    background-color: #2196F3; /* Material Design blue */
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+.slider:hover {
+    background-color: #aaa; /* Slight color change on hover */
+}
+
+input:checked:hover + .slider {
+    background-color: #1e88e5; /* Slight color change on hover when activated */
+}
+nav {
+    padding: 12px 16px; /* Some padding around text and button */
+    background-color: rgba(255, 255, 255, 1); /* 50% transparent white background */
+    border-radius: 4px; /* Slightly rounded corners */
+}
+
+/* Dark Mode Styles */
+
+nav.dark-mode {
+    background-color: rgba(0, 0, 0, 0.5); /* 50% transparent black background in dark mode */
+    color: #BB86FC; /* Material You secondary color for text in dark mode */
 }

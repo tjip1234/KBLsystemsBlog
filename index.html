@@ -6,15 +6,26 @@
     
 </head>
 <body>
-    <header>
-        <div class="header-content">
+    <header class="top-bar">
+        <div class="bar-content">
             <h1>Tjip1234 Lab</h1>
-            <h2>Random projects for fun</h2>
+            <div class="right-section">
+                <nav>
+                    <a href="#about-me">About Me</a>
+                </nav>
+                <span class="dark-mode-label">Dark Mode:</span>
+                <label class="switch">
+                    <input onclick="toggleDarkMode()" type="checkbox" id="darkModeToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
         </div>
     </header>
+    
+    
 
-    <div id="sidebar">
-        <h3>Tags</h3>
+    <div id="sidebar" class="sidebar">
+        <h3 class="sidebarh3">Tags</h3>
         <div id="tag-filter">
             <button class="tag-button" data-tag="OpenWrt">OpenWrt</button>
             <button class="tag-button" data-tag="Samba">Samba</button>
@@ -26,10 +37,9 @@
         
         <h2>Main Page</h2>
         <div class="iframe-container">
-            <iframe src="openwrtSamba.html" frameborder="0" data-tags="OpenWrt,Samba" class="iframe-thing"></iframe> 
-            <iframe src="openwrtSamba.html" frameborder="0" data-tags="OpenWrt,Samba" class="iframe-thing"></iframe>       
-            <iframe src="openwrtSamba.html" frameborder="0" data-tags="OpenWrt,Samba" class="iframe-thing"></iframe>       
-            <iframe src="openwrtSamba.html" frameborder="0" data-tags="OpenWrt,Samba" class="iframe-thing"></iframe>              
+            <iframe src="openwrtSambaPreview.html" frameborder="0" data-tags="OpenWrt,Samba" class="iframe-thing"></iframe>   
+            <iframe src="openwrtSambaPreview.html" frameborder="0" data-tags="OpenWrt,Samba" class="iframe-thing"></iframe>   
+            <iframe src="openwrtSambaPreview.html" frameborder="0" data-tags="OpenWrt,Samba" class="iframe-thing"></iframe>           
         </div>
                
          
