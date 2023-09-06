@@ -1,22 +1,47 @@
+:root {
+    /* Primary Colors */
+    --primary-light: #80CBC4;
+    --primary-default: #009688;
+    --primary-dark: #004D40;
+
+    /* Secondary Colors */
+    --secondary-light: #FFE082;
+    --secondary-default: #FFC107;
+    --secondary-dark: #FF6F00;
+
+    /* Background Colors */
+    --background-light: #FAFAFA;
+    --background-dark: #121212;
+
+    /* On Primary Colors */
+    --on-primary-light: #FFFFFF;
+    --on-primary-default: #FFFFFF;
+    --on-primary-dark: #121212;
+
+    /* On Secondary Colors */
+    --on-secondary-light: #121212;
+    --on-secondary-default: #121212;
+    --on-secondary-dark: #FFFFFF;
+}
 
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
-    background-color: #f4f4f4;
+    background-color: var(--background-light);
     display: grid;
-
 }
+
 .post-body {
-    background-color: #ffffff;
+    background-color: var(--background-light);
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
     margin-bottom: 30px;
     overflow: hidden;
     border-radius: 10px;
 }
 
-.post-body img{
+.post-body img {
     width: 100%;
     height: 200px;
     object-fit: cover;
@@ -28,57 +53,59 @@ body {
 
 .blog-title {
     margin: 0 0 10px 0;
-    color: #333;
+    color: var(--on-primary-dark);
 }
 
 .blog-description {
-    color: #666;
+    color: var(--on-secondary-light);
     line-height: 1.6;
 }
 
 .blog-link {
     display: inline-block;
-    color: #007bff;
+    color: var(--primary-default);
     text-decoration: none;
     margin-top: 10px;
     transition: color 0.3s ease;
 }
 
 .blog-link:hover {
-    color: #0056b3;
+    color: var(--primary-dark);
 }
+
 .full-article {
     display: block;
     text-align: center;
     padding: 50px;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--secondary-light);
 }
+
 body.dark-mode {
-    background-color: #1a1a1a;
+    background-color: var(--background-dark);
 }
 
 body.dark-mode .post-body {
-    background-color: #2a2a2a;
-    color: #e0e0e0;
+    background-color: var(--primary-dark);
+    color: var(--on-primary-light);
     box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.1);
 }
 
 body.dark-mode .blog-title {
-    color: #e0e0e0;
+    color: var(--on-primary-light);
 }
 
 body.dark-mode .blog-description {
-    color: #bbbbbb;
+    color: var(--on-secondary-dark);
 }
 
 body.dark-mode .blog-link {
-    color: #55aaff;
+    color: var(--secondary-light);
 }
 
 body.dark-mode .blog-link:hover {
-    color: #3388dd;
+    color: var(--secondary-default);
 }
 
 body.dark-mode .full-article {
-    border-top: 1px solid #555;
+    border-top: 1px solid var(--secondary-dark);
 }

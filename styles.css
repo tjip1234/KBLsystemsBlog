@@ -47,8 +47,9 @@ header {
     background: url('Assets/Background-header.jpg') no-repeat center center/cover;
     background-color: var(--primary-default);
     color: var(--primary-dark);
-    padding: 50px 0;
+    padding: 1.5em 0;
     text-align: center;
+    flex-wrap: wrap;
 }
 
 .header-content {
@@ -94,7 +95,7 @@ footer {
 .sidebarh3, .tag-button {
     font-size: 1.2em;
     color: var(--primary-default);
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--secondary-default);
     margin-bottom: 20px;
     padding-bottom: 10px;
 }
@@ -118,6 +119,34 @@ footer {
     font-weight: bold;
 }
 
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: white; /* Text color */
+    background-color: var(--primary-default); /* Button background color */
+    margin-left: 12px; /* Space between the buttons */
+    padding: 12px 24px; /* Vertical and horizontal padding */
+    border-radius: 4px; /* Slightly rounded edges */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Material Design shadow */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+nav a:hover {
+    background-color: var(--primary-dark); /* Darker shade on hover */
+}
+
+.right-section {
+    display: flex;           
+    align-items: center;     
+    justify-content: space-between;
+    height: 100%;            
+    gap: 16px;               
+}
+
 /* Switch & Top Bar */
 .top-bar {
     background-color: #fafafa;
@@ -128,10 +157,11 @@ footer {
 }
 
 .bar-content {
-    display: flex;
+    display: flex;  
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .dark-mode-label, .dark-mode-toggle {
@@ -168,6 +198,7 @@ footer {
 /* --- DARK MODE STYLES --- */
 body.dark-mode {
     background-color: var(--background-dark);
+    color: var(--primary-default);
 }
 body.dark-mode .sidebar {
     background-color: var(--background-dark);
@@ -182,9 +213,12 @@ body.dark-mode .sidebar a {
 body.dark-mode .sidebar a:hover {
     color: var(--secondary-dark);
 }
+body.dark-mode .bar-content{
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
 body.dark-mode header {
-    color: var(--on-primary-dark);
+    color: var(--primary-default);
     background-color: var(--primary-dark);
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Assets/Background-header.jpg') no-repeat center center/cover;
 }
@@ -232,6 +266,10 @@ body.dark-mode .tag-button.selected, body.dark-mode .tag-button:hover {
     left: 4px;
     bottom: 4px;
     background-color: var(--background-light);
+    background-image: url('Assets/dark_mode.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
     transition: .4s;
     border-radius: 50%; /* Make it circular */
     box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Material Design shadow */
@@ -243,6 +281,7 @@ input:checked + .slider {
 
 input:checked + .slider:before {
     transform: translateX(20px);
+    background-image: url('Assets/light_mode.svg');
 }
 
 
