@@ -1,48 +1,53 @@
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="stylepost.css">
-<div class="sidebar">
-    <a href="index.html" class="home-btn">Home</a>
-    <a href="index.html" class="home-btn">About me</a>
-    <h4>Related Blogs</h4>
-    <iframe src="openwrtSambaPreview.html" frameborder="0" data-tags="OpenWrt,Samba" class="iframe-thing"></iframe>   
-    <iframe src="openwrtSambaPreview.html" frameborder="0" data-tags="OpenWrt,Samba" class="iframe-thing"></iframe>   
-    <iframe src="openwrtSambaPreview.html" frameborder="0" data-tags="OpenWrt,Samba" class="iframe-thing"></iframe>   
-</div>
-<div class='post-body' itemprop="articleBody">
-    <img src="Assets/samba-server-setup.jpg" alt="Samba Server Setup">
-    <div class="blog-content">
-        <h3 class="blog-title">Setting Up an OpenWrt Samba File Router with USB Storage</h3>
-        <p class="blog-description">
-            Sometimes, a dedicated Network Attached Storage (NAS) is just not needed, and a single hard drive shared across your network is enough. This is where our simple setup comes in handy.
-        </p>
+<head name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tjip1234 Lab</title>
+    <link rel="stylesheet" type="text/css" href="stylepost.css">
+</head>
+<body>
+    <div class="sidebar">
+        <a href="index.html" class="home-btn">Home</a>
+        <a href="index.html" class="home-btn">About me</a>
+        <h4>Related Blogs</h4>
+        <iframe src="openwrtSambaPreview.html" frameborder="0" data-tags="OpenWrt,Samba" class="iframe-thing"></iframe>   
+        <iframe src="openwrtSambaPreview.html" frameborder="0" data-tags="OpenWrt,Samba" class="iframe-thing"></iframe>   
+        <iframe src="openwrtSambaPreview.html" frameborder="0" data-tags="OpenWrt,Samba" class="iframe-thing"></iframe>   
     </div>
-    <div class="full-article">
-        <h2>Setting Up an OpenWrt Samba File Router with USB Storage: A Simple Guide</h2>
-        <p>
-            So 
-        </p>
-        <h3>Starting Off</h3>
-        <p>
-            Begin by ensuring your router is running LEDE/OpenWrt (you can find numerous guides online for this step) and SSH into it. Install the Samba packages by updating your package list with <code>opkg update</code> and then install the Samba server with <code>opkg install luci-app-samba samba36-server</code>.
-        </p>
-        <h3>Setting Up USB Storage</h3>
-        <p>
-            Proceed to set up your USB storage. Identify your drive's details using <code>fdisk -l</code>, then manually mount the drive. To make this setup permanent, add the mount details in the <code>/etc/fstab</code> file, and append <code>mount -a</code> to your <code>/etc/rc.local</code> file. This ensures your USB drive automatically mounts at boot.
-        </p>
-        <h3>Configuring Samba</h3>
-        <p>
-            Next, edit the Samba configuration file with <code>vi /etc/config/samba</code> you can exit and save in vi with <code>:wq</code> ;), defining the workgroup, server name, and the path to your mounted USB storage. Set your shared directory permissions accordingly with <code>chmod 755 /mnt/sda1</code>.
-        </p>
-        <h3>Bringing It All Together</h3>
-        <p>
-            After setting the permissions, restart the Samba server with <code>/etc/init.d/samba restart</code>. Your Samba server is now running, ready to share files from your attached USB storage across the network. Access the shared folders on other devices using the server and share names.
-        </p>
-        <p>
-            And there you have it - a simple Samba file server setup! Keep in mind, this setup is basic. Depending on your security needs, more configurations may be required.
-        </p>
+    <div class='post-body' itemprop="articleBody">
+        <img src="Assets/samba-server-setup.jpg" alt="Samba Server Setup">
+        <div class="blog-content">
+            <h3 class="blog-title">Setting Up an OpenWrt Samba File Router with USB Storage</h3>
+            <p class="blog-description">
+                Sometimes, a dedicated Network Attached Storage (NAS) is just not needed, and a single hard drive shared across your network is enough. This is where our simple setup comes in handy.
+            </p>
+        </div>
+        <div class="full-article">
+            <h2>Setting Up an OpenWrt Samba File Router with USB Storage: A Simple Guide</h2>
+            <p>
+                So 
+            </p>
+            <h3>Starting Off</h3>
+            <p>
+                Begin by ensuring your router is running LEDE/OpenWrt (you can find numerous guides online for this step) and SSH into it. Install the Samba packages by updating your package list with <code>opkg update</code> and then install the Samba server with <code>opkg install luci-app-samba samba36-server</code>.
+            </p>
+            <h3>Setting Up USB Storage</h3>
+            <p>
+                Proceed to set up your USB storage. Identify your drive's details using <code>fdisk -l</code>, then manually mount the drive. To make this setup permanent, add the mount details in the <code>/etc/fstab</code> file, and append <code>mount -a</code> to your <code>/etc/rc.local</code> file. This ensures your USB drive automatically mounts at boot.
+            </p>
+            <h3>Configuring Samba</h3>
+            <p>
+                Next, edit the Samba configuration file with <code>vi /etc/config/samba</code> you can exit and save in vi with <code>:wq</code> ;), defining the workgroup, server name, and the path to your mounted USB storage. Set your shared directory permissions accordingly with <code>chmod 755 /mnt/sda1</code>.
+            </p>
+            <h3>Bringing It All Together</h3>
+            <p>
+                After setting the permissions, restart the Samba server with <code>/etc/init.d/samba restart</code>. Your Samba server is now running, ready to share files from your attached USB storage across the network. Access the shared folders on other devices using the server and share names.
+            </p>
+            <p>
+                And there you have it - a simple Samba file server setup! Keep in mind, this setup is basic. Depending on your security needs, more configurations may be required.
+            </p>
+        </div>
+        
     </div>
-    
-</div>
+</body>
 
 
 <script src="script.js"></script>
