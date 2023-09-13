@@ -29,7 +29,7 @@ body {
     margin: 0;
     padding: 0;
     text-align: left;
-    background-color: var(--background-light);
+    background-color: #FFFFFF;
     display: grid;
     grid-template-columns: 1fr 3fr;
     column-gap: 20px;
@@ -41,10 +41,20 @@ body {
 .sidebar {
     padding: 20px;
     background-color: var(--background-light);
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
     border-radius: 10px;
 }
 
+.sidebar-right {
+    float: right;
+    width: 20%;
+    background-color: var(--background-light);
+}
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
 .sidebar h4 {
     color: var(--on-primary-dark);
     border-bottom: 1px solid var(--secondary-light);
@@ -65,8 +75,10 @@ body {
 
 /* Main Post Styles */
 .post-body {
+    float: left;
+    width: 75%;
     background-color: var(--background-light);
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
     margin-bottom: 30px;
     overflow: visible;
     border-radius: 10px;
@@ -115,7 +127,23 @@ body {
     text-align: center;
     transition: background-color 0.3s ease;
 }
+.profile-picture {
+    width: 250px;               /* Fixed width */
+    height: 300px;              /* Fixed height */
+    float: center;               /* Position to the right */
+    margin-left: 20px;          /* Spacing on the left */
+    margin-bottom: 20px;        /* Spacing at the bottom */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+    border-radius: 15px;        /* Rounded corners */
+    border: 2px solid rgba(0, 0, 0, 0);     /* Subtle border */
+    object-fit: cover;          /* Prevent image from stretching */
+    transition: transform 0.3s; /* Smooth transition for hover effect */
+}
 
+.profile-picture:hover {
+    transform: scale(1.05);     /* Slightly scale up the image on hover */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Increase shadow depth on hover */
+}
 .home-btn:hover {
     background-color: var(--primary-dark);
 }
@@ -125,14 +153,18 @@ body {
     .sidebar {
         display: none;
     }
+    .sidebar-right{
+        display: none;
+    }
 }
 
 body.dark-mode {
-    background-color: var(--background-dark);
+    background-color: #101010;
 }
 
 body.dark-mode .sidebar, 
-body.dark-mode .post-body {
+body.dark-mode .post-body,
+body.dark-mode .sidebar-right{
     background-color: var(--background-dark);
     color: var(--on-primary-default);
 }
@@ -223,4 +255,39 @@ nav {
 nav.dark-mode {
     background-color: var(--background-dark);
     color: var(--secondary-default);
+}
+
+
+.header-image {
+    width: 100%;            /* Ensure it spans the full width of its container */
+    max-width: 100%;        /* To make sure it doesn't exceed the container width */
+    height: 20%;          /* Maintain the image's aspect ratio */
+    margin-bottom: 20px;    /* Add some space below the image */
+    display: block;         /* Ensures it's always treated as a block element */
+    border-radius: 10px;    /* Soften the edges a bit to match your design */
+    object-fit: cover;      /* If you decide to set a height, this will ensure it scales appropriately */
+}
+.inline-image:hover{
+    transform: scale(1.05);     /* Slightly scale up the image on hover */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+.inline-image {
+    max-width: 25%;       /* Ensure the image doesn't exceed its container's width */
+    height: auto;          /* Maintain the image's aspect ratio */
+    margin: 15px 0;        /* Add some vertical spacing above and below the image */
+    display: block;        /* Makes sure it's treated as a block element */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Optional: add a subtle shadow for some depth */
+    border-radius: 6px;    /* Consistent with your design's rounded edges */
+}
+.image-left {
+    float: left;
+    margin-right: 15px;   /* Add spacing to the right */
+}
+
+.image-right {
+    float: right;
+    margin-left: 15px;    /* Add spacing to the left */
+}
+.reset {
+    all: initial !important;
 }

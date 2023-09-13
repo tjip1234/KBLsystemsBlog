@@ -86,7 +86,9 @@ footer {
 
 .iframe-thing {
     width: 100%;
-    height: 30em;
+    min-height: 31em;
+    height: 31em;
+    max-height: 31em;
     min-width: 400px; 
 }
 

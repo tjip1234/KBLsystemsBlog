@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tjip1234 Lab</title>
+    <link rel="stylesheet" type="text/css" href="../stylepost.css">
+</head>
+<body>
+    <div id="sidebar" class="sidebar">
+        <a href="../index.html" class="home-btn">Home</a>
+        <a href="../aboutMe.html"class="home-btn">About me</a>
+        <h4>Related Blogs</h4>
+    </div>
+    <div class='post-body' itemprop="articleBody">
+        <img src="samba-server-setup.jpg" alt="Samba Server Setup" class="header-image">
+        <div class="blog-content">
+            <h3 class="blog-title">DIY Home Server: Router vs. Old Laptop</h3>
+            <p class="blog-description">
+                I was tasked for getting a server for my family to quickly share photos, documents, and other things. However, if you're concerned about power consumption, a full-fledged server might not be sucks. Here's how I tackled this problem with two different DIY approaches.
+            </p>
+        </div>
+        <div class="full-article">
+            <h3>Approach 1: OpenWRT Router File Server</h3>
+            
+            <a href="router.jpg" target="_blank"rel="noopener noreferrer" class="reset"><img src="router.jpg" class="inline-image image-right"></a>
+        
+            <p><strong>Requirements:</strong></p>
+            <ul>
+                <li>Router compatible with OpenWRT and equipped with a USB port</li>
+                <li>USB storage (either a stick or drive)</li>
+            </ul>
+            
+            <h4>Steps:</h4>
+            <ul>
+                <li>OpenWRT Setup: For tech enthusiasts, you might already own a router with OpenWRT/Luci. If not, a plethora of online guides can guide you through the installation.</li>
+            
+                <li>Storage Connection: Here's where the USB port comes in handy. Plug in your chosen storage medium. I used a USB to SATA adapter once, and due to its power needs, I relied on a powered hub. Depending on your setup, this might be necessary for you too.</li>
+            
+                <li>Storage Mounting: Manually mount the storage to make it accessible. Update the details in the fstab file to ensure it remains mounted across reboots. If you're new to OpenWRT, you might be using vi as your text editor. Quick tip: to save and exit in vi, type :wq.</li>
+            
+                <li>Samba Configuration: Install samba and edit your server settings by editing the configuration in /etc/config/samba.</li>
+            </ul>
+            <h4>Drawbacks:</h4> 
+            <p>
+            This approach has its limitations. For instance, older or smaller versions of OpenWRT might only support the dated Samba1, posing connection challenges. Moreover, if your router isn't robust enough, performance can be shaky.
+            </p>
+            
+            <h3>Approach 2: Reviving An Old Laptop</h3>
+            <a href="backside.jpg" target="_blank" rel="noopener noreferrer" class="reset"><img src="backside.jpg" class="inline-image image-right"></a>
+            <a href="brokenscreen.jpg" target="_blank" rel="noopener noreferrer" class="reset"><img src="brokenscreen.jpg" class="inline-image image-right"></a>
+            <p>
+                Storytime: I had an energy-efficient laptop from AliExpress, using a mere 10 watts at peak. It had faced a rough patch, with its screen breaking after a fall. Without any external video output, it seemed like a lost cause.
+            </p>
+            <p>
+                I installed the Ubuntu server on its drive via another computer. Once installed, I returned the drive to its original spot. Despite the broken screen, I enabled the ethernet connection blindly, then accessed the server through SSH. With this access, I installed and configured the Samba server.
+            </p>
+            <p>
+                Bonus: Leveraging the laptop's built-in Wi-Fi, I set up a hotspot. Instead of going the traditional bridging route, I opted for an `iptables` approach.
+            </p>
+            <h5>Steps for the Hotspot:</h5>
+            <ol>
+                <li>Assign Static IP: Give `wlp3s0` a static IP from a different subnet, for example, 10.0.0.1.</li>
+                <li>Configure dnsmasq: for me it was something like <br><code>
+                    interface=wlp3s0 <br>
+                    bind-interfaces <br>
+                    server=192.168.1.1</code></li>
+                <li>IP Forwarding & NAT Rules:<br> 
+                    <code>sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE <br>
+                    sudo iptables -A FORWARD -i eth0 -o wlp3s0 -m state --state RELATED,ESTABLISHED -j ACCEPT<br>
+                    sudo iptables -A FORWARD -i wlp3s0 -o eth0 -j ACCEPT</code></li>
+            </ol>
+            <p>
+                Outcome: This old laptop performed impressively as a home server. Its Wi-Fi capabilities might not have been top-tier, but it covered the essentials.
+            </p>
+            <p>
+                To wrap up, both strategies, despite their unique challenges, offer energy-efficient solutions for creating a home server. Whichever path you choose, you're in for a delightful DIY adventure. Happy tinkering!
+            </p>
+        </div>
+    </div>
+    <script src="../iframeside.js"></script>
+    <script src="../script.js"></script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.24.1/themes/prism.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.24.1/prism.js"></script>
+</body>
+</html>
